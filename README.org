@@ -1,0 +1,20 @@
+* Introduction
+=flymake-rust= adds support for the Rust programming language to Emacs’
+built-in Flymake system.
+
+* Installation
+This package is not yet available on the various package sites
+
+** Direct download
+Download this repository to some location, then add the following to
+your Emacs initialization:
+#+begin_src emacs-lisp
+  (add-to-list 'load-path "/path/to/flymake-rust")
+  (require flymake-rust)
+#+end_src
+
+* Usage
+Add the setup hook for =rust-mode=
+#+begin_src emacs-lisp
+  (add-hook 'rust-mode-hook 'flymake-rust-setup)
+#+end_src
