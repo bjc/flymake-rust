@@ -76,8 +76,8 @@ Returns a sequence of data in the form of (BYTE-START . BYTE-END)
 If any data are not available, nil will be used in its place."
   (let* ((spans (or (gethash "spans" hash) [])))
     (mapcar (lambda (span)
-              (let ((byte-start (or (gethash "byte_start" span) nil))
-                    (byte-end (or (gethash "byte_end" span) nil)))
+              (let ((byte-start (or (1+ (gethash "byte_start" span)) nil))
+                    (byte-end (or (1+ (gethash "byte_end" span)) nil)))
                 `(,byte-start . ,byte-end)))
             spans)))
 
