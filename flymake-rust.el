@@ -271,8 +271,11 @@ node ‘(flymake)Backend functions’."
 
 For the value of ‘ARGS’, see the documentation for
 ‘flymake-diagnostic-functions’."
+  ;; It seems like ‘:recent-changes’ is set when a temporary buffer
+  ;; change happens between saves, but is nil on file save (or initial
+  ;; check).
   (let ((rc (plist-member args :recent-changes)))
-    (when (or (not rc) (cadr rc))
+    (when (or (not rc) (and (eq flymake-rust-checker 'rustc) (cadr rc)))
       (flymake-rust--call (current-buffer) report-fn))))
 
 ;;;###autoload
